@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="customer.*"%>
 <jsp:useBean class="user.UserBean" id="user" scope="session" />
-<jsp:useBean class="customer.CustomerListBean" id="customerList" scope="request" />
+<%-- <jsp:useBean class="customer.CustomerListBean" id="customerList" scope="request" /> --%>
+
 <!doctype html>
 <html>
 <head>
@@ -33,18 +34,17 @@
 			    CustomerBean customer = customerList.getNext();
 			%>
 			<tr>
-				<td class="center"><%=customer.getId()%></td>
-				<td><%=customer.getName()%></td>
-				<td><%=customer.getZip()%></td>
-				<td><%=customer.getAddress1()%>
-					<%=customer.getAddress2()%></td>
+				<td class="center">${request.cutomer.id}</td>
+				<td>${request.cutomer.name}</td>
+				<td>${request.cutomer.zip}</td>
+				<td>${request.cutomer.address1}${request.cutomer.address2}</td>
 				<%
 				if (user.getLvl() >= 1)
 				{
 				%>
 				<td class="center">
 					<form action="CustomerServlet" method="post">
-						<button name="state" value="detail,<%=customer.getId()%>">詳細</button>
+						<button name="state" value="detail,${request.cutomer.id}">詳細</button>
 					</form>
 				</td>
 
@@ -55,8 +55,6 @@
 				%>
 			</tr>
 			<%
-			p
-
 			}
 			%>
 		</table>
