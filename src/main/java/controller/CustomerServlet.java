@@ -14,8 +14,6 @@ import customer.CustomerBean;
 import customer.CustomerListBean;
 import customer.CustomerListLogic;
 import customer.CustomerLogic;
-import user.UserBean;
-import user.UserLogic;
 import util.LogUtil;
 import util.StringUtil;
 
@@ -48,16 +46,16 @@ public class CustomerServlet extends BaseServlet {
 
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        UserBean user = (UserBean) session.getAttribute("user");
+        CustomerBean customer = (CustomerBean) session.getAttribute("customer");
 
-        if ((user == null) || (user.getName() == null)) {
+        if ((customer == null) || (customer.getName() == null)) {
             procSessionError(request, response, session);
             return;
         }
 
-        UserLogic userLogic = new UserLogic();
-        user = userLogic.load(user.getId());
-        session.setAttribute("user", user);
+        CustomerLogic customerLogic = new CustomerLogic();
+        customer = customerLogic.load(customer.getId());
+        session.setAttribute("user", customer);
 
         String param = request.getParameter("state");
         String[] state = param.split(",");
@@ -187,9 +185,21 @@ public class CustomerServlet extends BaseServlet {
      */
     private void procUpdate(HttpServletRequest request, HttpServletResponse response, HttpSession session)
             throws ServletException, IOException {
-        // TODO 未実装
-
-        getServletContext().getRequestDispatcher("/WEB-INF/xxxx/xxxx.jsp").forward(request, response);
+        // TODO 実装①
+        
+        CustomerLogic customerLogic = new CustomerLogic();
+        CustomerBean customer =(CustomerBean)session.getAttribute("customer");
+     String  errMessage = customerLogic.update(customer);
+    		
+    	session.removeAttribute("customerEdit");
+    	
+    	if (errMessage == null) {
+    		getServletContext().getRequestDispatcher("/WEB-INF/customer/update_success.jsp").forward(request, response);
+    	}else {
+    		session.setAttribute("errMessage", errMessage);
+            getServletContext().getRequestDispatcher("/WEB-INF/user/update_fail.jsp").forward(request, response);
+    	}
+      
     }
 
     /**
@@ -201,9 +211,9 @@ public class CustomerServlet extends BaseServlet {
      * @param response  HTTPのレスポンス
      */
     private void procNew(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO 未実装
+        // TODO 実装②
 
-        getServletContext().getRequestDispatcher("/WEB-INF/xxxx/xxxx.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/customer/new.jsp").forward(request, response);
     }
 
     /**
@@ -217,9 +227,20 @@ public class CustomerServlet extends BaseServlet {
      */
     private void procAdd(HttpServletRequest request, HttpServletResponse response, HttpSession session)
             throws ServletException, IOException {
-        // TODO 未実装
-
-        getServletContext().getRequestDispatcher("/WEB-INF/xxxx/xxxx.jsp").forward(request, response);
+        // TODO 実装③
+    	CustomerLogic customerLogic =new CustomerLogic();
+    	 CustomerBean customer =(CustomerBean)session.getAttribute("customer");
+         String  errMessage = customerLogic.add(customer);
+    	
+    	session.removeAttribute("customerEdit");
+    	
+    	if(errMessage==null) {
+    		 getServletContext().getRequestDispatcher("/WEB-INF/customer/add_success.jsp").forward(request, response);
+    	}else {
+    		session.setAttribute("errMessage", errMessage);
+    		 getServletContext().getRequestDispatcher("/WEB-INF/customer/add_fail.jsp").forward(request, response);
+    	}
+       
     }
 
     /**
@@ -233,9 +254,14 @@ public class CustomerServlet extends BaseServlet {
      */
     private void procDeleteConfirm(HttpServletRequest request, HttpServletResponse response, String id)
             throws ServletException, IOException {
-        // TODO 未実装
+        // TODO 実装④
+    	int intId = Integer.parseInt(id);
+    	CustomerLogic customerLogic =new CustomerLogic();
+    	CustomerBean customer=customerLogic.load(intId);
+    	
+    	request.setAttribute("customer", customer);
 
-        getServletContext().getRequestDispatcher("/WEB-INF/xxxx/xxxx.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/customer/delete_confirm.jsp").forward(request, response);
     }
 
     /**
@@ -249,9 +275,18 @@ public class CustomerServlet extends BaseServlet {
      */
     private void procDelete(HttpServletRequest request, HttpServletResponse response, HttpSession session)
             throws ServletException, IOException {
-        // TODO 未実装
+        // TODO 実装⑤
+    	CustomerLogic customerLogic = new CustomerLogic();
+    	CustomerBean customer = (CustomerBean)session.getAttribute("customer");
+    	String errMessage = customerLogic.delete(customer);
+    	
+    	if(errMessage==null) {
+    		getServletContext().getRequestDispatcher("/WEB-INF/customer/delete_success.jsp").forward(request, response);
+    	}else {
+    		getServletContext().getRequestDispatcher("/WEB-INF/customer/delete_fail.jsp").forward(request, response);
+    	}
 
-        getServletContext().getRequestDispatcher("/WEB-INF/xxxx/xxxx.jsp").forward(request, response);
+        
     }
 
     /**
@@ -264,9 +299,9 @@ public class CustomerServlet extends BaseServlet {
      */
     private void procEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
-        // TODO 未実装
+        // TODO 実装⑥
 
-        getServletContext().getRequestDispatcher("/WEB-INF/xxxx/xxxx.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/customer/edit.jsp").forward(request, response);
     }
 
     /**
@@ -279,9 +314,11 @@ public class CustomerServlet extends BaseServlet {
      */
     private void procEditConfirm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO 未実装
-
-        getServletContext().getRequestDispatcher("/WEB-INF/xxxx/xxxx.jsp").forward(request, response);
+        // TODO 実装⑦
+    	CustomerLogic customerLogic = new CustomerLogic();
+    	customerLogic.setCustomerBeanFromRequestToSession(request);
+    	
+        getServletContext().getRequestDispatcher("/WEB-INF/customer/edit_confirm.jsp").forward(request, response);
     }
 
     /**
@@ -294,8 +331,10 @@ public class CustomerServlet extends BaseServlet {
      */
     private void procNewConfirm(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException, UnsupportedEncodingException {
-        // TODO 未実装
+        // TODO 実装⑧
+    	CustomerLogic customerLogic = new CustomerLogic();
+    	customerLogic.setCustomerBeanFromRequestToSession(request);
 
-        getServletContext().getRequestDispatcher("/WEB-INF/xxxx/xxxx.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/customer/new_confirm.jsp").forward(request, response);
     }
 }
