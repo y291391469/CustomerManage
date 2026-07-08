@@ -21,7 +21,7 @@ public class BaseDao {
     private static final String CONNECTION_USER = "manager";
 
     /** DBへ接続時のパスワード */
-    private static final String CONNECTION_PASSWORD = "customer";
+    private static final String CONNECTION_PASSWORD = "custmoer";
 
     /** DBへの接続 */
     protected Connection conn = null;
