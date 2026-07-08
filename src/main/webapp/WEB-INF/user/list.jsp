@@ -41,8 +41,6 @@ String[] aryLevelName = { "一般ユーザー", "顧客管理者", "システム
 				</td>
 			</tr>
 			<%
-			p
-
 			}
 			%>
 		</table>
