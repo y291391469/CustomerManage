@@ -12,7 +12,7 @@
 
 		<!-- ｢削除確認｣画面 -->
 		<h2>削除の確認</h2>
-		<table>
+		<table border="1">
 			<tr>
 				<td class="title">氏名</td>
 				<td><%=customer.getName()%></td>

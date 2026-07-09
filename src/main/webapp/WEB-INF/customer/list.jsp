@@ -14,7 +14,7 @@
 	<div class="main">
 
 		<h2>検索結果</h2>
-		<table>
+		<table border="1">
 			<tr>
 				<th>ＩＤ</th>
 				<th>ログインID</th>

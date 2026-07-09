@@ -16,7 +16,7 @@ String[] aryLevelName = { "一般ユーザー", "顧客管理者", "システム
 	<h1>ユーザー管理</h1>
 	<div class="main">
 		<h2>ユーザー一覧</h2>
-		<table>
+		<table border="1">
 			<tr>
 				<th>ＩＤ</th>
 				<th>ログインID</th>
