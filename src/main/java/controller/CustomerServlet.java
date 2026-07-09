@@ -53,9 +53,10 @@ public class CustomerServlet extends BaseServlet
                 HttpSession session = request.getSession();
                 UserBean user = (UserBean) session.getAttribute("user");
 
-                if ((user == null) || (user.getName() == null)){
-                   procSessionError(request, response, session);
-                   return;
+                if ((user == null) || (user.getName() == null))
+                    {
+                        procSessionError(request, response, session);
+                        return;
                     }
 
                 UserLogic userLogic = new UserLogic();
