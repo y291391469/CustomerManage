@@ -15,6 +15,8 @@ import customer.CustomerBean;
 import customer.CustomerListBean;
 import customer.CustomerListLogic;
 import customer.CustomerLogic;
+import user.UserBean;
+import user.UserLogic;
 import util.LogUtil;
 import util.StringUtil;
 
@@ -49,17 +51,16 @@ public class CustomerServlet extends BaseServlet
 
                 request.setCharacterEncoding("UTF-8");
                 HttpSession session = request.getSession();
-                CustomerBean customer = (CustomerBean) session.getAttribute("customer");
+                UserBean user = (UserBean) session.getAttribute("user");
 
-                if ((customer == null) || (customer.getName() == null))
-                    {
-                        procSessionError(request, response, session);
-                        return;
+                if ((user == null) || (user.getName() == null)){
+                   procSessionError(request, response, session);
+                   return;
                     }
 
-                CustomerLogic customerLogic = new CustomerLogic();
-                customer = customerLogic.load(customer.getId());
-                session.setAttribute("cutomer", customer);
+                UserLogic userLogic = new UserLogic();
+                user = userLogic.load(user.getId());
+                session.setAttribute("user", user);
 
                 String param = request.getParameter("state");
                 String[] state = param.split(",");
