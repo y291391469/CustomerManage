@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="customer.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="customer.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean class="user.UserBean" id="user" scope="session" />
-<%-- <jsp:useBean class="customer.CustomerListBean" id="customerList" scope="request" /> --%>
+<jsp:useBean class="customer.CustomerListBean" id="customerList" scope="request" />
 
 <!doctype html>
 <html>
@@ -12,48 +12,33 @@
 <body>
 	<h1>顧客管理</h1>
 	<div class="main">
+
 		<h2>検索結果</h2>
-		<table border="1">
+		<table>
 			<tr>
-				<th>ＩＤ2</th>
+				<th>ＩＤ</th>
+				<th>ログインID</th>
 				<th>氏名</th>
-				<th>郵便番号</th>
-				<th>住所</th>
+				<th>ユーザーレベル</th>
+				<th>操作</th>
 				<%
-				if (user.getLvl() >= 1)
+				while (customerList.hasNext())
 				{
+				    CustomerBean customer = customerList.getNext();
 				%>
-				<th colspan="2" style="width: 100px">操作</th>
-				<%
-				}
-				%>
-			</tr>
-			<%
-			while (customerList.hasNext())
-			{
-			    CustomerBean customer = customerList.getNext();
-			%>
+			
 			<tr>
-				<td class="center">${request.cutomer.id}</td>
-				<td>${request.cutomer.name}</td>
-				<td>${request.cutomer.zip}</td>
-				<td>${request.cutomer.address1}${request.cutomer.address2}</td>
-				<%
-				if (user.getLvl() >= 1)
-				{
-				%>
+				<td class="center"><%=customer.getId()%></td>
+				<td><%=customer.getName()%></td>
+				<td><%=customer.getZip()%></td>
+				<td><%=customer.getAddress1()%><%=customer.getAddress2()%></td>
+
 				<td class="center">
 					<form action="CustomerServlet" method="post">
-						<button name="state" value="detail,${request.cutomer.id}">詳細</button>
+						<button name="state" value="detail,<%=customer.getId()%>">詳細</button>
+						<button name="state" value="delete_confirm,<%=customer.getId()%>">削除</button>
 					</form>
 				</td>
-
-				<!-- TODO ｢削除｣ボタン -->
-				
-
-				<%
-				}
-				%>
 			</tr>
 			<%
 			}
@@ -63,6 +48,7 @@
 			<p>
 
 				<!-- TODO ｢新規登録｣ボタン -->
+				<button name="state" value="new" formaction="CustomerServlet">新規登録</button>
 
 				<button name="state" value="search">検索条件画面</button>
 			</p>
