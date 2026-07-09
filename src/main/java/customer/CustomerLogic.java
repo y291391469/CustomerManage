@@ -81,7 +81,7 @@ public class CustomerLogic {
         
         //HttpSession session = request.getSession();
         //UserBean user = (UserBean) session.getAttribute("user");
-        //要チェック！！
+        //要チェック
         
         // TODO 未実装
 
