@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="customer.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean class="user.UserBean" id="user" scope="session" />
-<jsp:useBean class="customer.CustomerListBean" id="customerList" scope="request" />
+<%-- <jsp:useBean class="customer.CustomerListBean" id="customerList" scope="request" /> --%>
 
 <!doctype html>
 <html>
@@ -16,7 +15,7 @@
 		<h2>検索結果</h2>
 		<table border="1">
 			<tr>
-				<th>ＩＤ</th>
+				<th>ＩＤ2</th>
 				<th>氏名</th>
 				<th>郵便番号</th>
 				<th>住所</th>
@@ -29,42 +28,36 @@
 				}
 				%>
 			</tr>
+			<%
+			while (customerList.hasNext())
+			{
+			    CustomerBean customer = customerList.getNext();
+			%>
+			<tr>
+				<td class="center">${request.cutomer.id}</td>
+				<td>${request.cutomer.name}</td>
+				<td>${request.cutomer.zip}</td>
+				<td>${request.cutomer.address1}${request.cutomer.address2}</td>
+				<%
+				if (user.getLvl() >= 1)
+				{
+				%>
+				<td class="center">
+					<form action="CustomerServlet" method="post">
+						<button name="state" value="detail,${request.cutomer.id}">詳細</button>
+					</form>
+				</td>
 
-			<c:set var="i" value="0" />
-			<c:forEach begin="0" end="999">
-				<!-- 無限ループを防ぐためのセーフティネット -->
-				<c:if test="${costomerList.hasNext()}">
-					<!-- whileの条件式 -->
-					<!-- ここに繰り返したい処理を記述 -->
+				<!-- TODO ｢削除｣ボタン -->
+				
 
-					<%
-					CustomerBean customer = customerList.getNext();
-					%>
-
-					<tr>
-						<td class="center">${cutomer.id}</td>
-						<td>${cutomer.name}</td>
-						<td>${cutomer.zip}</td>
-						<td>${cutomer.address1}${cutomer.address2}</td>
-
-						<c:if test="${user.getLvl() >= 1 }">
-							<td class="center">
-								<form action="CustomerServlet" method="post">
-									<button name="state" value="detail,${request.cutomer.id}">詳細</button>
-								</form>
-							</td>
-						</c:if>
-						<!-- TODO ｢削除｣ボタン -->
-
-
-
-					</tr>
-
-				</c:if>
-
-				<c:set var="i" value="${i + 1}" />
-			</c:forEach>
-
+				<%
+				}
+				%>
+			</tr>
+			<%
+			}
+			%>
 		</table>
 		<form action="CustomerServlet" method="post">
 			<p>
