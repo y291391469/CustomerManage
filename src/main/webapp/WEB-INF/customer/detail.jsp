@@ -45,6 +45,7 @@
 			<p>
 
 				<!-- TODO ｢編集｣ボタン -->
+				
 				<button name="state" value="edit">編集</button>
 
 				<input type="button" value="戻る" onclick="history.back()">

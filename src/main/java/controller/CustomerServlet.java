@@ -200,17 +200,17 @@ public class CustomerServlet extends BaseServlet
                 // TODO 実装①
 
                 CustomerLogic customerLogic = new CustomerLogic();
-                CustomerBean customer = (CustomerBean) session.getAttribute("customer");
-                String errMessage = customerLogic.update(customer);
+                CustomerBean customer = (CustomerBean)session.getAttribute("customer");
+                String errMessage = null;
+                errMessage = customerLogic.update(customer);
 
-                session.removeAttribute("customerEdit");
+                session.removeAttribute("customer");
 
                 if (errMessage == null)
                     {
                         getServletContext().getRequestDispatcher("/WEB-INF/customer/update_success.jsp")
                                 .forward(request, response);
-                    } else
-                    {
+                    } else{
                         session.setAttribute("errMessage", errMessage);
                         getServletContext().getRequestDispatcher("/WEB-INF/user/update_fail.jsp").forward(request,
                                 response);

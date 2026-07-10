@@ -5,13 +5,13 @@ import static constants.MessageConstants.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import util.LogUtil;
 import customer.CustomerBean;
+import util.LogUtil;
 
 /**
  * 顧客管理DAO(トランザクション制御あり)
  */
-public class CustomerDaoWithTransaction extends BaseDaoWithTransaction {
+public class CustomerDaoWithTransaction extends CustomerDao {
 
     /**
      * 顧客情報テーブルへ指定の顧客情報を追加する。
@@ -64,6 +64,7 @@ public class CustomerDaoWithTransaction extends BaseDaoWithTransaction {
                 + "tel=?,fax=?,email=? WHERE id=?";
 
         try {
+        	open();
             pstmt = conn.prepareStatement(strSql);
             pstmt.setInt(1, cutomer.getId());
             pstmt.setString(2, cutomer.getName());
@@ -79,7 +80,7 @@ public class CustomerDaoWithTransaction extends BaseDaoWithTransaction {
             if (result == 0) {
                 errMessage = MESSAGE_NO_EXIST_DATA_TO_UPDATE;
             }
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             errMessage = e.getMessage();
             LogUtil.printStackTrace(e);
         } finally {

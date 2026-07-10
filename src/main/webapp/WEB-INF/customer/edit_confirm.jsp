@@ -14,49 +14,49 @@
 
 		<!-- ｢編集確認｣画面 -->
 		<h2>修正の確認</h2>
+		<form action="CustomerServlet" method="post">
 		<table>
 			<tr>
 				<td class="title">氏名</td>
-				<td><%=customer.getName()%></td>
+				<td><%= customer.getName()%></td>
 			</tr>
 
 			<tr>
 				<td class="title">郵便番号</td>
-				<td><%=customer.getZip()%></td>
+				<td><%= customer.getZip()%></td>
 			</tr>
 
 			<tr>
 				<td class="title">住所1</td>
-				<td><%=customer.getAddress1()%></td>
+				<td><%= customer.getAddress1()%></td>
 			</tr>
 
 			<tr>
 				<td class="title">住所2</td>
-				<td><%=customer.getAddress2()%></td>
+				<td><%= customer.getAddress2()%></td>
 			</tr>
 
 			<tr>
 				<td class="title">TEL</td>
-				<td><%=customer.getTel()%></td>
+				<td><%= customer.getTel()%></td>
 			</tr>
 
 			<tr>
 				<td class="title">FAX</td>
-				<td><%=customer.getFax()%></td>
+				<td><%= customer.getFax()%></td>
 			</tr>
 
 			<tr>
 				<td class="title">Email</td>
-				<td><%=customer.getEmail()%></td>
+				<td><%= customer.getEmail()%></td>
 			</tr>
-		</table>
-
-		<form action="CustomerServlet" method="post">
+			</table>
 			<p>
-				<button name="state" value="update">OK</button>
+				<button name="state" value="update" >OK</button>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
-		</form>
+			</form>
+
 	</div>
 </body>
 </html>

@@ -13,7 +13,7 @@
 		<h2>更新完了</h2>
 		<form action="CustomerServlet" method="post">
 			<p>
-				<button name="state" value="list">検索画面</button>
+				<button name="state" value="search">検索画面</button>
 			</p>
 		</form>
 
