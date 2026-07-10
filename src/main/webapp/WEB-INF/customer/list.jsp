@@ -36,9 +36,6 @@
 				<td class="center">
 					<form action="CustomerServlet" method="post">
 						<button name="state" value="detail,<%=customer.getId()%>">詳細</button>
-						<%
-						System.out.println("\n" + "\n" + "\n" + customer.getId());
-						%>
 						<button name="state" value="delete_confirm,<%=customer.getId()%>">削除</button>
 					</form>
 				</td>
