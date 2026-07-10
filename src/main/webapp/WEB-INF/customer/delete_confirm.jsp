@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="customer.*"%>
+<jsp:useBean class="user.UserBean" id="user" scope="session" />
 <jsp:useBean class="customer.CustomerBean" id="customer" scope="session" />
 <!doctype html>
 <html>

@@ -61,7 +61,7 @@
 			</table>
 
 			<p>
-				<input type="submit" value="送信">
+				<button name="state" value="edit_confirm">送信</button>
 				<br>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
@@ -72,33 +72,22 @@
 </body>
 <script type="text/javascript">
 	function funcConfirm() {
-
-		// TODO バリデーションチェック･alertダイアログ処理
-		function funcConfirm() {
-
-		// TODO バリデーションチェック･alertダイアログ処理
-		var name = document.name.txt.value;
-		var zip = document.name.txt.value;
-		var address1 = document.name.address1.value;
-		var address2 = document.name.address2.value;
-		var tel = document.tel.txt.value;
-		var fax = document.tel.txt.value;
-		var email = document.tel.txt.value;
-
-		var errMsg;
-
-		if (name == null) {
-			errMsg = "名前が入力されていません";
-		} else if (zip == null) {
-			errMsg = "郵便番号が入力されていません";
-		} else if (address1 == null) {
-			errMsg = "住所が入力されていません";
-		} else if (email == null) {
-			errMsg = "メールが入力されていません";
+		if (!document.form1.login.value.match(/^[a-zA-Z0-9]+$/)) {
+			alert("ログイン名を半角英数字で入力してください");
+			return false;
 		}
-
-		alert(errMsg);
-
+		if (document.form1.user_name.value == "") {
+			alert("氏名が入力されていません。");
+			return false;
+		}
+		if (!document.form1.password1.value.match(/^[\x20-\x7E]+$/)) {
+			alert("パスワードは半角英数字と記号で入力してください");
+			return false;
+		}
+		if (document.form1.password1.value != document.form1.password2.value) {
+			alert("確認用のパスワードが一致しません");
+			return false;
+		}
 	}
 </script>
 </html>
