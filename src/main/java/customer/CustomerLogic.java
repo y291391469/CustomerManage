@@ -1,10 +1,12 @@
 package customer;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import dao.CustomerDao;
 import dao.CustomerDaoWithTransaction;
 import util.LogUtil;
+import util.StringUtil;
 
 /**
  * 顧客情報のロジック
@@ -79,11 +81,21 @@ public class CustomerLogic {
     public void setCustomerBeanFromRequestToSession(HttpServletRequest request) {
         LogUtil.println(this.getClass().getSimpleName() + "#setCustomerBeanFromRequestToSession");
         
-        //HttpSession session = request.getSession();
-        //UserBean user = (UserBean) session.getAttribute("user");
-        //要チェック
+        CustomerBean customer = (CustomerBean)request.getSession().getAttribute("customer");
+        if (customer == null) {
+            customer = new CustomerBean();
+        }
+
+        customer.setName(StringUtil.exchangeESCEncoding(request.getParameter("name")));
+        customer.setZip(StringUtil.exchangeESCEncoding(request.getParameter("zip")));
+        customer.setAddress1(StringUtil.exchangeESCEncoding(request.getParameter("address1")));
+        customer.setAddress2(StringUtil.exchangeESCEncoding(request.getParameter("address2")));
+        customer.setTel(StringUtil.exchangeESCEncoding(request.getParameter("tel")));
+        customer.setFax(StringUtil.exchangeESCEncoding(request.getParameter("fax")));
+        customer.setEmail(StringUtil.exchangeESCEncoding(request.getParameter("email")));
         
-        // TODO 未実装
+        HttpSession session = request.getSession();
+        session.setAttribute("customer", customer);
 
     }
 }
