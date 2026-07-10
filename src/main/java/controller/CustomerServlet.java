@@ -200,7 +200,7 @@ public class CustomerServlet extends BaseServlet
                 // TODO 実装①
 
                 CustomerLogic customerLogic = new CustomerLogic();
-                CustomerBean customer = (CustomerBean)session.getAttribute("customer");
+                CustomerBean customer = (CustomerBean) session.getAttribute("customer");
                 String errMessage = null;
                 errMessage = customerLogic.update(customer);
 
@@ -210,7 +210,8 @@ public class CustomerServlet extends BaseServlet
                     {
                         getServletContext().getRequestDispatcher("/WEB-INF/customer/update_success.jsp")
                                 .forward(request, response);
-                    } else{
+                    } else
+                    {
                         session.setAttribute("errMessage", errMessage);
                         getServletContext().getRequestDispatcher("/WEB-INF/user/update_fail.jsp").forward(request,
                                 response);
@@ -251,9 +252,11 @@ public class CustomerServlet extends BaseServlet
                 // TODO 実装③
                 CustomerLogic customerLogic = new CustomerLogic();
                 CustomerBean customer = (CustomerBean) session.getAttribute("customer");
-                String errMessage = customerLogic.add(customer);
+                String errMessage = null;
 
-                session.removeAttribute("customerEdit");
+                errMessage = customerLogic.add(customer);
+
+                session.removeAttribute("customer");
 
                 if (errMessage == null)
                     {
@@ -307,7 +310,8 @@ public class CustomerServlet extends BaseServlet
                 // TODO 実装⑤
                 CustomerLogic customerLogic = new CustomerLogic();
                 CustomerBean customer = (CustomerBean) session.getAttribute("customer");
-                String errMessage = customerLogic.delete(customer);
+                String errMessage = null;
+                errMessage = customerLogic.delete(customer);
 
                 if (errMessage == null)
                     {
