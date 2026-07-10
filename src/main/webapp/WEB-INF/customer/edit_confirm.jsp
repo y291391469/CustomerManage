@@ -51,11 +51,12 @@
 			</tr>
 
 			<p>
-				<input type="submit" value="OK">
-				<br>
+				<button name="state" value="update">OK</button>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
 
 			</div>
 </body>
 </html>
+
+
