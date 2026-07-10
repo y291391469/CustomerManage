@@ -54,7 +54,7 @@
 				<tr>
 					<td class="title">Email</td>
 					<td>
-						<input type="text" name="eamail" maxlength="50" value="${customer.email }">
+						<input type="text" name="email" maxlength="50" value="${customer.email }">
 					</td>
 				</tr>
 			</table>
