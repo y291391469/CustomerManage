@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="customer.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean class="user.UserBean" id="user" scope="session" />
 <jsp:useBean class="customer.CustomerBean" id="customer" scope="session" />
 <!doctype html>
@@ -10,7 +10,6 @@
 <body>
 	<h1>顧客管理</h1>
 	<div class="main">
-
 		<!-- ｢削除確認｣画面 -->
 		<h2>削除の確認</h2>
 		<table border="1">
@@ -49,10 +48,11 @@
 				<td><%=customer.getEmail()%></td>
 			</tr>
 		</table>
-
-		<p>
-			<button name="state" value="delete">OK</button>
-			<input type="button" value="戻る" onclick="history.back()">
-		</p>
+		<form action="CustomerServlet" method="post">
+			<p>
+				<button name="state" value="delete">OK</button>
+				<input type="button" value="戻る" onclick="history.back()">
+			</p>
+		</form>
 	</div>
 </body>

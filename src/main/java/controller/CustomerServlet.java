@@ -102,7 +102,7 @@ public class CustomerServlet extends BaseServlet
                             break;
                         // 削除確認
                         case "delete_confirm":
-                            procDeleteConfirm(request, response, state[1]);
+                            procDeleteConfirm(request, response, session, state[1]);
                             break;
                         // 削除完了/削除未完了
                         case "delete":
@@ -275,15 +275,16 @@ public class CustomerServlet extends BaseServlet
          * @param response  HTTPのレスポンス
          * @param id        削除対象の顧客情報のID(HTTPのリクエストに含まれるセッションのstate属性の2つ目の値)
          */
-        private void procDeleteConfirm(HttpServletRequest request, HttpServletResponse response, String id)
-                throws ServletException, IOException
+        private void procDeleteConfirm(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+                String id) throws ServletException, IOException
             {
                 // TODO 実装④
                 int intId = Integer.parseInt(id);
                 CustomerLogic customerLogic = new CustomerLogic();
-                CustomerBean customer = customerLogic.load(intId);
+                CustomerBean customer = null;
+                customer = customerLogic.load(intId);
 
-                request.setAttribute("customer", customer);
+                session.setAttribute("customer", customer);
 
                 getServletContext().getRequestDispatcher("/WEB-INF/customer/delete_confirm.jsp").forward(request,
                         response);
