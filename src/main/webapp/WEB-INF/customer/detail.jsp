@@ -46,7 +46,7 @@
 
 				<!-- TODO ｢編集｣ボタン -->
 				
-				<input type="submit" value="編集">
+				<button name="state" value="edit">編集</button>
 
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>

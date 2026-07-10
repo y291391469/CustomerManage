@@ -19,50 +19,49 @@
 				<tr>
 					<td class="title">氏名</td>
 					<td>
-						<input type="text" name="name" maxlength="20" velue="${session.customer.name }">
+						<input type="text" name="name" maxlength="20" value="<%= customer.getName() %> ">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">郵便番号</td>
 					<td>
-						<input type="text" name="zip" maxlength="10" velue="${session.customer.zip }">
+						<input type="text" name="zip" maxlength="10" value="<%= customer.getZip() %> ">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所1</td>
 					<td>
-						<input type="text" name="address1" maxlength="48" velue="${session.customer.address1 }">
+						<input type="text" name="address1" maxlength="48" value="<%= customer.getAddress1() %> ">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所2</td>
 					<td>
-						<input type="text" name="address2" maxlength="48" velue="${session.customer.address2 }">
+						<input type="text" name="address2" maxlength="48" value="<%= customer.getAddress2() %> ">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">TEL</td>
 					<td>
-						<input type="text" name="tel" maxlength="20" velue="${session.customer.tel }">
+						<input type="text" name="tel" maxlength="20" value="<%= customer.getTel() %> ">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">FAX</td>
 					<td>
-						<input type="text" name="fax" maxlength="20" velue="${session.customer.fax }">
+						<input type="text" name="fax" maxlength="20" value="<%= customer.getFax() %> ">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">Email</td>
 					<td>
-						<input type="text" name="eamail" maxlength="50" velue="${session.customer.email }">
+						<input type="text" name="email" maxlength="50" value="<%= customer.getEmail() %> ">
 					</td>
 				</tr>
 			</table>
 
 			<p>
-				<input type="submit" value="送信">
-				<br>
+				<button name="state" value="edit_confirm">送信</button>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
 
