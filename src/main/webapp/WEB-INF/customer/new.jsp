@@ -61,7 +61,8 @@
 				</tr>
 			</table>
 			<p>
-				<input type="submit" value="送信"> <input type="button" value="戻る" onclick="history.back()">
+				<button name="state" value="add">送信</button>
+				<input type="button" value="戻る" onclick="history.back()">
 			</p>
 		</form>
 	</div>
