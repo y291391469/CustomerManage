@@ -20,48 +20,48 @@
 				<tr>
 					<td class="title">氏名</td>
 					<td>
-						<input type="text" name="name" id="name" maxlength="20" value="${session.customer.name }">
+						<input type="text" name="name" id="name" maxlength="20" value="${customer.name }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">郵便番号</td>
 					<td>
-						<input type="text" name="zip" id="zip" maxlength="10" value="${session.customer.zip }">
+						<input type="text" name="zip" id="zip" maxlength="10" value="${customer.zip }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所1</td>
 					<td>
-						<input type="text" name="address1" id="address1" maxlength="48" value="${session.customer.address1 }">
+						<input type="text" name="address1" id="address1" maxlength="48" value="${customer.address1 }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所2</td>
 					<td>
-						<input type="text" name="address2" id="address2" maxlength="48" value="${session.customer.address2 }">
+						<input type="text" name="address2" id="address2" maxlength="48" value="${customer.address2 }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">TEL</td>
 					<td>
-						<input type="text" name="tel" id="tel" maxlength="20" value="${session.customer.tel }">
+						<input type="text" name="tel" id="tel" maxlength="20" value="${customer.tel }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">FAX</td>
 					<td>
-						<input type="text" name="fax" id="fax" maxlength="20" value="${session.customer.fax }">
+						<input type="text" name="fax" id="fax" maxlength="20" value="${customer.fax }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">Email</td>
 					<td>
-						<input type="text" name="email" id="email" maxlength="50" value="${session.customer.email }">
+						<input type="text" name="email" id="email" maxlength="50" value="${customer.email }">
 					</td>
 				</tr>
 			</table>
 			<p>
-				<button name="state" value="add">送信</button>
+				<button name="state" value="new_confirm">送信</button>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
 		</form>
