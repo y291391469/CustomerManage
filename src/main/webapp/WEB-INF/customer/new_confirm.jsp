@@ -49,12 +49,14 @@
 				<td class="title">Email</td>
 				<td><%=customer.getEmail()%></td>
 			</tr>
-
+		</table>
+		<form action="CustomerServlet" method="post">
 			<p>
 				<button name="state" value="add">OK</button>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
+		</form>
 
-			</div>
+	</div>
 </body>
 </html>
