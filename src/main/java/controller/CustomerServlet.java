@@ -231,6 +231,8 @@ public class CustomerServlet extends BaseServlet
             {
                 // TODO 実装②
 
+                HttpSession session = request.getSession();
+
                 getServletContext().getRequestDispatcher("/WEB-INF/customer/new.jsp").forward(request, response);
             }
 

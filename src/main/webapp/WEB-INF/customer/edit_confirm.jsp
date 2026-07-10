@@ -51,11 +51,12 @@
 			</tr>
 		</table>
 
-		<p>
-			<button name="state" value="update">OK</button>
-			<input type="button" value="戻る" onclick="history.back()">
-		</p>
-
+		<form action="CustomerServlet" method="post">
+			<p>
+				<button name="state" value="update">OK</button>
+				<input type="button" value="戻る" onclick="history.back()">
+			</p>
+		</form>
 	</div>
 </body>
 </html>
