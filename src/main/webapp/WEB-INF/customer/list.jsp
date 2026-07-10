@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="customer.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="customer.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean class="user.UserBean" id="user" scope="session" />
 <jsp:useBean class="customer.CustomerListBean" id="customerList" scope="request" />
 
@@ -12,6 +12,7 @@
 <body>
 	<h1>顧客管理</h1>
 	<div class="main">
+
 		<h2>検索結果</h2>
 		<table border="1">
 			<tr>

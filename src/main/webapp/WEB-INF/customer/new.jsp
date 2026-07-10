@@ -15,54 +15,53 @@
 		<!-- TODO ｢新規登録｣画面 -->
 
 		<h2>新規登録</h2>
-		<form name="form1" action="CustomerServlet" method="post" onsubmit="return funcConfirm()">
+		<form name="form1" action="CustomerServlet" method="post" onsubmit="return funcConfirm(event)">
 			<table>
 				<tr>
 					<td class="title">氏名</td>
 					<td>
-						<input type="text" name="name" maxlength="20" velue="${session.customer.name }">
+						<input type="text" name="name" id="name" maxlength="20" value="${customer.name }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">郵便番号</td>
 					<td>
-						<input type="text" name="zip" maxlength="10" velue="${session.customer.zip }">
+						<input type="text" name="zip" id="zip" maxlength="10" value="${customer.zip }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所1</td>
 					<td>
-						<input type="text" name="address1" maxlength="48" velue="${session.customer.address1 }">
+						<input type="text" name="address1" id="address1" maxlength="48" value="${customer.address1 }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所2</td>
 					<td>
-						<input type="text" name="address2" maxlength="48" velue="${session.customer.address2 }">
+						<input type="text" name="address2" id="address2" maxlength="48" value="${customer.address2 }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">TEL</td>
 					<td>
-						<input type="text" name="tel" maxlength="20" velue="${session.customer.tel }">
+						<input type="text" name="tel" id="tel" maxlength="20" value="${customer.tel }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">FAX</td>
 					<td>
-						<input type="text" name="fax" maxlength="20" velue="${session.customer.fax }">
+						<input type="text" name="fax" id="fax" maxlength="20" value="${customer.fax }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">Email</td>
 					<td>
-						<input type="text" name="eamail" maxlength="50" velue="${session.customer.email }">
+						<input type="text" name="email" id="email" maxlength="50" value="${customer.email }">
 					</td>
 				</tr>
 			</table>
 			<p>
-				<input type="submit" value="送信">
-				<br>
+				<button name="state" value="new_confirm">送信</button>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
 		</form>
@@ -70,30 +69,22 @@
 </body>
 <script type="text/javascript">
 	function funcConfirm() {
-
-		// TODO バリデーションチェック･alertダイアログ処理
-		var name = document.name.txt.value;
-		var zip = document.name.txt.value;
-		var address1 = document.name.address1.value;
-		var address2 = document.name.address2.value;
-		var tel = document.tel.txt.value;
-		var fax = document.tel.txt.value;
-		var email = document.tel.txt.value;
-
-		var errMsg;
-
-		if (name == null) {
-			errMsg = "名前が入力されていません";
-		} else if (zip == null) {
-			errMsg = "郵便番号が入力されていません";
-		} else if (address1 == null) {
-			errMsg = "住所が入力されていません";
-		} else if (email == null) {
-			errMsg = "メールが入力されていません";
+		if (document.form1.name.value == "") {
+			alert("氏名が入力されていません。");
+			return false;
 		}
-
-		alert(errMsg);
-
+		if (document.form1.zip.value == "") {
+			alert("郵便番号が入力されていません。");
+			return false;
+		}
+		if (document.form1.address1.value == "") {
+			alert("住所が入力されていません。");
+			return false;
+		}
+		if (document.form1.email.value == "") {
+			alert("住所が入力されていません。");
+			return false;
+		}
 	}
 </script>
 </html>
