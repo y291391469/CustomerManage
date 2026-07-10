@@ -51,7 +51,8 @@
 		</table>
 
 		<p>
-			<input type="submit" value="OK"> <input type="button" value="戻る" onclick="history.back()">
+			<button name="state" value="delete">OK</button>
+			<input type="button" value="戻る" onclick="history.back()">
 		</p>
 	</div>
 </body>
