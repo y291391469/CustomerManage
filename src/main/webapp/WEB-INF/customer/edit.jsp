@@ -19,50 +19,49 @@
 				<tr>
 					<td class="title">氏名</td>
 					<td>
-						<input type="text" name="name" maxlength="20" velue="${customer.name }">
+						<input type="text" name="name" maxlength="20" value="${customer.name }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">郵便番号</td>
 					<td>
-						<input type="text" name="zip" maxlength="10" velue="${customer.zip }">
+						<input type="text" name="zip" maxlength="10" value="${customer.zip }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所1</td>
 					<td>
-						<input type="text" name="address1" maxlength="48" velue="${customer.address1 }">
+						<input type="text" name="address1" maxlength="48" value="${customer.address1 }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所2</td>
 					<td>
-						<input type="text" name="address2" maxlength="48" velue="${customer.address2 }">
+						<input type="text" name="address2" maxlength="48" value="${customer.address2 }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">TEL</td>
 					<td>
-						<input type="text" name="tel" maxlength="20" velue="${customer.tel }">
+						<input type="text" name="tel" maxlength="20" value="${customer.tel }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">FAX</td>
 					<td>
-						<input type="text" name="fax" maxlength="20" velue="${customer.fax }">
+						<input type="text" name="fax" maxlength="20" value="${customer.fax }">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">Email</td>
 					<td>
-						<input type="text" name="eamail" maxlength="50" velue="${customer.email }">
+						<input type="text" name="eamail" maxlength="50" value="${customer.email }">
 					</td>
 				</tr>
 			</table>
 
 			<p>
 				<button name="state" value="edit_confirm">送信</button>
-				<br>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
 
