@@ -49,13 +49,14 @@
 				<td class="title">Email</td>
 				<td><%=customer.getEmail()%></td>
 			</tr>
+		</table>
 
-			<p>
-				<button name="state" value="update">OK</button>
-				<input type="button" value="戻る" onclick="history.back()">
-			</p>
+		<p>
+			<button name="state" value="update">OK</button>
+			<input type="button" value="戻る" onclick="history.back()">
+		</p>
 
-			</div>
+	</div>
 </body>
 </html>
 

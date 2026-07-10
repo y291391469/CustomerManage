@@ -8,11 +8,10 @@
 <title>顧客管理</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
 </head>
+
 <body>
 	<h1>顧客管理</h1>
 	<div class="main">
-
-		<!-- TODO ｢既存データ編集･削除｣画面 -->
 		<h2>既存データの編集</h2>
 		<form name="form1" action="CustomerServlet" method="post" onsubmit="return funcConfirm()">
 			<table>
@@ -64,39 +63,28 @@
 				<button name="state" value="edit_confirm">送信</button>
 				<input type="button" value="戻る" onclick="history.back()">
 			</p>
-
 		</form>
-
 	</div>
+	<script type="text/javascript">
+		
+		function funcConfirm() {
+			if (document.form1.name.value == "") {
+				alert("氏名が入力されていません。");
+				return false;
+			}
+			if (document.form1.zip.value == "") {
+				alert("郵便番号が入力されていません。");
+				return false;
+			}
+			if (document.form1.address1.value == "") {
+				alert("住所が入力されていません。");
+				return false;
+			}
+			if (document.form1.email.value == "") {
+				alert("住所が入力されていません。");
+				return false;
+			}
+		}
+	</script>
 </body>
-<script type="text/javascript">
-	function funcConfirm() {
-
-		// TODO バリデーションチェック･alertダイアログ処理
-		const name = document.getElementById('name').value;
-		const zip = document.getElementById('zip').value;
-		const address1 = document.getElementById('address1').value;
-		const email = document.getElementById('email').value;
-
-		const errMsg;
-
-		if (name.trim() === '') {
-			errMsg = "名前が入力されていません";
-		} else if (zip.trim() === '') {
-			errMsg = "郵便番号が入力されていません";
-		} else if (address1.trim() === '') {
-			errMsg = "住所が入力されていません";
-		} else if (email.trim() === '') {
-			errMsg = "メールが入力されていません";
-		}
-
-		if (errMsg.trim() === '') {
-			event.preventDefault();
-			return false;
-			alert(errMsg);
-		}
-		return true;
-
-	}
-</script>
 </html>

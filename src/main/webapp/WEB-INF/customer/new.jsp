@@ -69,32 +69,22 @@
 </body>
 <script type="text/javascript">
 	function funcConfirm() {
-
-		// TODO バリデーションチェック･alertダイアログ処理
-		const name = document.getElementById('name').value;
-		const zip = document.getElementById('zip').value;
-		const address1 = document.getElementById('address1').value;
-		const email = document.getElementById('email').value;
-
-		const errMsg;
-
-		if (name.trim() === '') {
-			errMsg = "名前が入力されていません";
-		} else if (zip.trim() === '') {
-			errMsg = "郵便番号が入力されていません";
-		} else if (address1.trim() === '') {
-			errMsg = "住所が入力されていません";
-		} else if (email.trim() === '') {
-			errMsg = "メールが入力されていません";
-		}
-
-		if (errMsg.trim() === '') {
-			event.preventDefault();
+		if (document.form1.name.value == "") {
+			alert("氏名が入力されていません。");
 			return false;
-			alert(errMsg);
 		}
-		return true;
-
+		if (document.form1.zip.value == "") {
+			alert("郵便番号が入力されていません。");
+			return false;
+		}
+		if (document.form1.address1.value == "") {
+			alert("住所が入力されていません。");
+			return false;
+		}
+		if (document.form1.email.value == "") {
+			alert("住所が入力されていません。");
+			return false;
+		}
 	}
 </script>
 </html>
