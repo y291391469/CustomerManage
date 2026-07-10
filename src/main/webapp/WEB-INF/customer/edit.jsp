@@ -71,22 +71,32 @@
 </body>
 <script type="text/javascript">
 	function funcConfirm() {
-		if (!document.form1.login.value.match(/^[a-zA-Z0-9]+$/)) {
-			alert("ログイン名を半角英数字で入力してください");
-			return false;
+
+		// TODO バリデーションチェック･alertダイアログ処理
+		const name = document.getElementById('name').value;
+		const zip = document.getElementById('zip').value;
+		const address1 = document.getElementById('address1').value;
+		const email = document.getElementById('email').value;
+
+		const errMsg;
+
+		if (name.trim() === '') {
+			errMsg = "名前が入力されていません";
+		} else if (zip.trim() === '') {
+			errMsg = "郵便番号が入力されていません";
+		} else if (address1.trim() === '') {
+			errMsg = "住所が入力されていません";
+		} else if (email.trim() === '') {
+			errMsg = "メールが入力されていません";
 		}
-		if (document.form1.user_name.value == "") {
-			alert("氏名が入力されていません。");
+
+		if (errMsg.trim() === '') {
+			event.preventDefault();
 			return false;
+			alert(errMsg);
 		}
-		if (!document.form1.password1.value.match(/^[\x20-\x7E]+$/)) {
-			alert("パスワードは半角英数字と記号で入力してください");
-			return false;
-		}
-		if (document.form1.password1.value != document.form1.password2.value) {
-			alert("確認用のパスワードが一致しません");
-			return false;
-		}
+		return true;
+
 	}
 </script>
 </html>
