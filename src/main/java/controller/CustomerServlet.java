@@ -250,10 +250,11 @@ public class CustomerServlet extends BaseServlet
             {
                 // TODO 実装③
                 CustomerLogic customerLogic = new CustomerLogic();
-                CustomerBean customer = (CustomerBean) session.getAttribute("customer");
-                String errMessage = customerLogic.add(customer);
+                CustomerBean customer = (CustomerBean)session.getAttribute("customer");
+                String errMessage =null;
+                errMessage =customerLogic.add(customer);
 
-                session.removeAttribute("customerEdit");
+                session.removeAttribute("customer");
 
                 if (errMessage == null)
                     {

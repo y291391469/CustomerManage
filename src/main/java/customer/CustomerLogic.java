@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import dao.CustomerDao;
-import dao.CustomerDaoWithTransaction;
 import util.LogUtil;
 import util.StringUtil;
 
@@ -36,11 +35,12 @@ public class CustomerLogic {
     public String add(CustomerBean customer) {
         LogUtil.println(this.getClass().getSimpleName() + "#add");
         
-        CustomerDaoWithTransaction cdwt = new CustomerDaoWithTransaction();
-        cdwt.add(customer);
+        CustomerDao customerDao = new CustomerDao();
+        String errMessage = null;
+        errMessage = customerDao.add(customer);
         // TODO 実装①
 
-        return null;
+        return errMessage;
     }
 
     /**
@@ -67,13 +67,14 @@ public class CustomerLogic {
      */
     public String delete(CustomerBean customer) {
         LogUtil.println(this.getClass().getSimpleName() + "#delete");
+        String errMessage=null;
         
-        CustomerDaoWithTransaction cdwt = new CustomerDaoWithTransaction();
-        cdwt.delete(customer.getId());
+        CustomerDao customerDao = new CustomerDao();
+        errMessage=customerDao.delete(customer.getId());
 
         // TODO 実装③
 
-        return null;
+        return errMessage;
     }
 
     /**

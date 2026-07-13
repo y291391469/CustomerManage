@@ -157,8 +157,7 @@ public class CustomerDao extends BaseDao {
         
         String errMessage = null;
         PreparedStatement pstmt = null;
-        String strSql = "INSERT INTO customer (id,name,zip,address1,address2,tel,fax,email)"
-        		+ "VALUES(sequence_customer_id.NEXTVAL,?,?,?,?,?,?,?)";
+        String strSql = "INSERT INTO customer (name,zip,address1,address2,tel,fax,email) VALUES(?,?,?,?,?,?,?)";
 
         try {
             open();
@@ -244,6 +243,7 @@ public class CustomerDao extends BaseDao {
         String strSql = "DELETE from CUSTOMER WHERE id=?";
 
         try {
+        	open();
             pstmt = conn.prepareStatement(strSql);
             pstmt.setInt(1, id);
 
@@ -251,7 +251,7 @@ public class CustomerDao extends BaseDao {
             if (result == 0) {
                 errMessage = MESSAGE_NO_EXIST_DATA_TO_DELETE;
             }
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             errMessage = e.getMessage();
             LogUtil.printStackTrace(e);
         } finally {

@@ -11,7 +11,7 @@ import util.LogUtil;
 /**
  * 顧客管理DAO(トランザクション制御あり)
  */
-public class CustomerDaoWithTransaction extends CustomerDao {
+public class CustomerDaoWithTransaction extends BaseDaoWithTransaction {
 
     /**
      * 顧客情報テーブルへ指定の顧客情報を追加する。
@@ -60,27 +60,25 @@ public class CustomerDaoWithTransaction extends CustomerDao {
 
         String errMessage = null;
         PreparedStatement pstmt = null;
-        String strSql = "UPDATE CUSTOMER SET id=?,name=?,zip=?,address1=?,address2=?,"
-                + "tel=?,fax=?,email=? WHERE id=?";
+        String strSql = "UPDATE CUSTOMER SET name=?,zip=?,address1=?,address2=?,tel=?,fax=?,email=? WHERE id=?";
 
         try {
-        	open();
+  
             pstmt = conn.prepareStatement(strSql);
-            pstmt.setInt(1, cutomer.getId());
-            pstmt.setString(2, cutomer.getName());
-            pstmt.setString(3, cutomer.getZip());
-            pstmt.setString(4, cutomer.getAddress1());
-            pstmt.setString(5, cutomer.getAddress2());
-            pstmt.setString(6, cutomer.getTel());
-            pstmt.setString(7, cutomer.getFax());
-            pstmt.setString(8, cutomer.getEmail());
-            pstmt.setInt(9, cutomer.getId());
+            pstmt.setString(1, cutomer.getName());
+            pstmt.setString(2, cutomer.getZip());
+            pstmt.setString(3, cutomer.getAddress1());
+            pstmt.setString(4, cutomer.getAddress2());
+            pstmt.setString(5, cutomer.getTel());
+            pstmt.setString(6, cutomer.getFax());
+            pstmt.setString(7, cutomer.getEmail());
+            pstmt.setInt(8, cutomer.getId());
 
             int result = pstmt.executeUpdate();
             if (result == 0) {
                 errMessage = MESSAGE_NO_EXIST_DATA_TO_UPDATE;
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch ( SQLException e) {
             errMessage = e.getMessage();
             LogUtil.printStackTrace(e);
         } finally {

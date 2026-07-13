@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import util.LogUtil;
 import dao.CustomerDao;
 import dao.CustomerDaoWithTransaction;
+import util.LogUtil;
 
 
 /**
