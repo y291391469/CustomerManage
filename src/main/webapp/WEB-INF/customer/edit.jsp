@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean class="user.UserBean" id="user" scope="session" />
 <jsp:useBean class="customer.CustomerBean" id="customer" scope="session" />
 <!doctype html>
@@ -7,51 +6,56 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>顧客管理</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
 </head>
 
 <body>
 	<h1>顧客管理</h1>
 	<div class="main">
 		<h2>既存データの編集</h2>
-		<form name="form1" action="CustomerServlet" method="post"
-			onsubmit="return funcConfirm()">
+		<form name="form1" action="CustomerServlet" method="post" onsubmit="return funcConfirm()">
 			<table>
 				<tr>
 					<td class="title">氏名</td>
-					<td><input type="text" name="name" maxlength="20"
-						value="<%=customer.getName()%> "></td>
+					<td>
+						<input type="text" name="name" maxlength="20" value="<%=customer.getName()%> ">
+					</td>
 				</tr>
 				<tr>
 					<td class="title">郵便番号</td>
-					<td><input type="text" name="zip" maxlength="10"
-						value="<%=customer.getZip()%> "></td>
+					<td>
+						<input type="text" name="zip" maxlength="10" value="<%=customer.getZip()%> ">
+					</td>
 				</tr>
 				<tr>
 					<td class="title">住所1</td>
-					<td><input type="text" name="address1" maxlength="48"
-						value="<%=customer.getAddress1()%> "></td>
+					<td>
+						<input type="text" name="address1" maxlength="48" value="<%=customer.getAddress1()%> ">
+					</td>
 				</tr>
 				<tr>
 					<td class="title">住所2</td>
-					<td><input type="text" name="address2" maxlength="48"
-						value="<%=customer.getAddress2()%> "></td>
+					<td>
+						<input type="text" name="address2" maxlength="48" value="<%=customer.getAddress2()%> ">
+					</td>
 				</tr>
 				<tr>
 					<td class="title">TEL</td>
-					<td><input type="text" name="tel" maxlength="20"
-						value="<%=customer.getTel()%> "></td>
+					<td>
+						<input type="text" name="tel" maxlength="20" value="<%=customer.getTel()%> ">
+					</td>
 				</tr>
 				<tr>
 					<td class="title">FAX</td>
-					<td><input type="text" name="fax" maxlength="20"
-						value="<%=customer.getFax()%> "></td>
+					<td>
+						<input type="text" name="fax" maxlength="20" value="<%=customer.getFax()%> ">
+					</td>
 				</tr>
 				<tr>
 					<td class="title">Email</td>
-					<td><input type="text" name="email" maxlength="50"
-						value="<%=customer.getEmail()%> "></td>
+					<td>
+						<input type="text" name="email" maxlength="50" value="<%=customer.getEmail()%> ">
+					</td>
 				</tr>
 			</table>
 
@@ -61,7 +65,8 @@
 			</p>
 		</form>
 	</div>
-	<script type="text/javascript">
+</body>
+<script type="text/javascript">
 	function funcConfirm(event) {
 		'use strict';
 
@@ -99,7 +104,7 @@
 		if (name === "") {
 			errors.push('氏名が入力されていません');
 			firstField = firstField || getField('name');
-		} else if (name.length > 20) {
+		} else if (name.length >= 20) {
 			errors.push('氏名は20文字以内で入力してください');
 			firstField = firstField || getField('name');
 		}
@@ -119,14 +124,14 @@
 		if (address1 === "") {
 			errors.push('住所1が入力されていません');
 			firstField = firstField || getField('address1');
-		} else if (address1.length > 48) {
+		} else if (address1.length >= 48) {
 			errors.push('住所1は48文字以内で入力してください');
 			firstField = firstField || getField('address1');
 		}
 
 		// 住所2: 任意・最大48
 		var address2 = valueOf('address2');
-		if (address2.length > 48) {
+		if (address2.length >= 48) {
 			errors.push('住所2は48文字以内で入力してください');
 			firstField = firstField || getField('address2');
 		}
@@ -137,7 +142,7 @@
 			if (!reTelFax.test(tel)) {
 				errors.push('TELは数字、ハイフン、空白、括弧のみで入力してください');
 				firstField = firstField || getField('tel');
-			} else if (tel.length > 20) {
+			} else if (tel.length >= 20) {
 				errors.push('TELは20文字以内で入力してください');
 				firstField = firstField || getField('tel');
 			}
@@ -149,7 +154,7 @@
 			if (!reTelFax.test(fax)) {
 				errors.push('FAXは数字、ハイフン、空白、括弧のみで入力してください');
 				firstField = firstField || getField('fax');
-			} else if (fax.length > 20) {
+			} else if (fax.length >= 20) {
 				errors.push('FAXは20文字以内で入力してください');
 				firstField = firstField || getField('fax');
 			}
@@ -160,7 +165,7 @@
 		if (email === "") {
 			errors.push('Emailが入力されていません');
 			firstField = firstField || getField('email');
-		} else if (email.length > 50) {
+		} else if (email.length >= 50) {
 			errors.push('Emailは50文字以内で入力してください');
 			firstField = firstField || getField('email');
 		} else if (!reEmail.test(email)) {
@@ -188,6 +193,6 @@
 
 		// 問題なければ送信を許可
 		return true;
-	</script>
-</body>
+	}
+</script>
 </html>

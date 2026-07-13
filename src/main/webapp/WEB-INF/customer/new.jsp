@@ -105,7 +105,7 @@
 		if (name === "") {
 			errors.push('氏名が入力されていません');
 			firstField = firstField || getField('name');
-		} else if (name.length > 20) {
+		} else if (name.length >= 20) {
 			errors.push('氏名は20文字以内で入力してください');
 			firstField = firstField || getField('name');
 		}
@@ -125,14 +125,14 @@
 		if (address1 === "") {
 			errors.push('住所1が入力されていません');
 			firstField = firstField || getField('address1');
-		} else if (address1.length > 48) {
+		} else if (address1.length >= 48) {
 			errors.push('住所1は48文字以内で入力してください');
 			firstField = firstField || getField('address1');
 		}
 
 		// 住所2: 任意・最大48
 		var address2 = valueOf('address2');
-		if (address2.length > 48) {
+		if (address2.length >= 48) {
 			errors.push('住所2は48文字以内で入力してください');
 			firstField = firstField || getField('address2');
 		}
@@ -143,7 +143,7 @@
 			if (!reTelFax.test(tel)) {
 				errors.push('TELは数字、ハイフン、空白、括弧のみで入力してください');
 				firstField = firstField || getField('tel');
-			} else if (tel.length > 20) {
+			} else if (tel.length >= 20) {
 				errors.push('TELは20文字以内で入力してください');
 				firstField = firstField || getField('tel');
 			}
@@ -155,7 +155,7 @@
 			if (!reTelFax.test(fax)) {
 				errors.push('FAXは数字、ハイフン、空白、括弧のみで入力してください');
 				firstField = firstField || getField('fax');
-			} else if (fax.length > 20) {
+			} else if (fax.length >= 20) {
 				errors.push('FAXは20文字以内で入力してください');
 				firstField = firstField || getField('fax');
 			}
@@ -166,7 +166,7 @@
 		if (email === "") {
 			errors.push('Emailが入力されていません');
 			firstField = firstField || getField('email');
-		} else if (email.length > 50) {
+		} else if (email.length >= 50) {
 			errors.push('Emailは50文字以内で入力してください');
 			firstField = firstField || getField('email');
 		} else if (!reEmail.test(email)) {
