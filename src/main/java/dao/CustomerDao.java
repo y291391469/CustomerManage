@@ -163,8 +163,7 @@ public class CustomerDao extends BaseDao
 
 				String errMessage = null;
 				PreparedStatement pstmt = null;
-				String strSql = "INSERT INTO customer (name, zip, address1, address2, tel, fax, email)"
-						+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
+				String strSql = "INSERT INTO customer (name, zip, address1, address2, tel, fax, email)VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 				try {
 					open();
