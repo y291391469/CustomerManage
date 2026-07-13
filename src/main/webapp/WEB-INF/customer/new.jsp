@@ -32,13 +32,13 @@
 				<tr>
 					<td class="title">住所1</td>
 					<td>
-						<input type="text" name="address1" id="address1" maxlength="48">
+						<input type="text" name="address1" id="address1" maxlength="98">
 					</td>
 				</tr>
 				<tr>
 					<td class="title">住所2</td>
 					<td>
-						<input type="text" name="address2" id="address2" maxlength="48">
+						<input type="text" name="address2" id="address2" maxlength="98">
 					</td>
 				</tr>
 				<tr>
@@ -125,15 +125,15 @@
 		if (address1 === "") {
 			errors.push('住所1が入力されていません');
 			firstField = firstField || getField('address1');
-		} else if (address1.length >= 48) {
-			errors.push('住所1は48文字以内で入力してください');
+		} else if (address1.length >= 98) {
+			errors.push('住所1は98文字以内で入力してください');
 			firstField = firstField || getField('address1');
 		}
 
 		// 住所2: 任意・最大48
 		var address2 = valueOf('address2');
-		if (address2.length >= 48) {
-			errors.push('住所2は48文字以内で入力してください');
+		if (address2.length >= 98) {
+			errors.push('住所2は98文字以内で入力してください');
 			firstField = firstField || getField('address2');
 		}
 
