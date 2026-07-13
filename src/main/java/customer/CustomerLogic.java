@@ -70,13 +70,15 @@ public class CustomerLogic
 		public String delete(CustomerBean customer)
 			{
 				LogUtil.println(this.getClass().getSimpleName() + "#delete");
+				String errMessage=null;
 
 				CustomerDao customerDao = new CustomerDao();
-				customerDao.delete(customer.getId());
+				
+				errMessage=customerDao.delete(customer.getId());
 
 				// TODO 実装③
 
-				return null;
+				return errMessage;
 			}
 
 		/**
