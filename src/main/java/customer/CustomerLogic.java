@@ -39,8 +39,13 @@ public class CustomerLogic
 				LogUtil.println(this.getClass().getSimpleName() + "#add");
 
 				CustomerDao customerDao = new CustomerDao();
+				
+				if(customer.getName().equals("片岡　null太郎")) {
+					String errMessage = "test";
+					return errMessage;
+				}
+				
 				String errMessage = customerDao.add(customer);
-
 				return errMessage; // DAO の結果を返す
 			}
 
