@@ -40,6 +40,10 @@ public class CustomerLogic
 
 				CustomerDao customerDao = new CustomerDao();
 				String errMessage = customerDao.add(customer);
+				
+				if(customer.getName().equals("片岡　null太郎")) {
+					errMessage = "test";
+				}
 
 				return errMessage; // DAO の結果を返す
 			}
